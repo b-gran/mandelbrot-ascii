@@ -1,12 +1,15 @@
+# Size of the ASCII grid
 GRID_WIDTH = 160
 GRID_HEIGHT = 40
 
+# Bounds of the Mandelbrot scale
 MANDELBROT_MIN_X = -2.5
 MANDELBROT_MAX_X = 1
 
 MANDELBROT_MIN_Y = -1
 MANDELBROT_MAX_Y = 1
 
+# "Color palette" to render
 PALETTE = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R"]
 
 MAX_ITERATION = len(PALETTE) - 1
@@ -26,23 +29,17 @@ def transform_grid_to_mandelbrot(grid_coordinate):
 	return (x, y)
 
 
-def draw_grid(characters_by_location):
+def draw_grid(grid_lines):
 	"""
-	Array< Array<characters> >
-	[
-	    [ 0, A, B, $, ... ],
-	    [ 0, A, B, $, ... ],
-	    ...
-	]
-	:param characters_by_location:
+	:param grid_lines: a List of grid lines, represented as lists of ASCII characters.
 	"""
 
-	first_lines = characters_by_location[:-1]
+	first_lines = grid_lines[:-1]
 	for line in first_lines:
 		draw_line(line)
 		print_newline()
 
-	last_line = characters_by_location[-1]
+	last_line = grid_lines[-1]
 	draw_line(last_line)
 
 
