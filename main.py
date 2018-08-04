@@ -9,21 +9,13 @@ MANDELBROT_MAX_Y = 1
 
 PALETTE = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R"]
 
-MAX_ITERATION = len(PALETTE)
-
-
-# row is an integer in [0, GRID_WIDTH - 1]
-# mandelbrot x is a real number in (-2.5, 1)
-
-# column is an integer in [0, GRID_HEIGHT - 1]
-# mandelbrot y is a real number in (-1, 1)
-
-# (row, column) -> (mandelbrot x, mandelbrot y)
+MAX_ITERATION = len(PALETTE) - 1
 
 
 def transform_grid_to_mandelbrot(grid_coordinate):
 	"""
 	Converts grid coordinates to Mandelbrot coordinates.
+	(row, column) -> (mandelbrot x, mandelbrot y)
 	:return: (number, number)
 	"""
 	[row, column] = grid_coordinate
@@ -76,7 +68,7 @@ def generate_fractal():
 			y = 0
 			iteration = 0
 
-			while x ** 2 + y ** 2 < C ** 2 and iteration < (MAX_ITERATION - 1):
+			while x ** 2 + y ** 2 < C ** 2 and iteration < MAX_ITERATION:
 				xtemp = x ** 2 - y ** 2 + x0
 				y = 2 * x * y + y0
 				x = xtemp
